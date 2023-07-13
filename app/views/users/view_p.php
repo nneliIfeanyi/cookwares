@@ -67,15 +67,7 @@
 <div class="col-lg-7 mt-2">
 <div class="card">
 <div class="card-body lh-1">
-<h1 class="h3"><?= $data['product']->brand ?></h1>
-<ul class="list-inline lh-1">
-<li class="list-inline-item">
-<h6>Model :</h6>
-</li>
-<li class="list-inline-item">
-<p class="text-muted"><strong><?= $data['product']->model?></strong></p>
-</li>
-</ul>
+<h1 class="h3"><?= $data['product']->title ?></h1>
 <ul class="list-inline lh-1">
 <li class="list-inline-item">
 <h6>Category :</h6>
@@ -141,7 +133,7 @@
 
 <div class="row">
 <div class="col d-grid">
-<a href="https://wa.me<?= $data['seller']->phone ?>?text=I%20am%20interested%20in%20buying%20this%20<?=URLROOT.'/'.'users'.'/'.'view_p'.'/'.$data['product']->id?>" class="btn btn-success btn-block"><i class="fa fa-whatsapp fa-fw"></i>Whatsapp</a>
+<a href="https://wa.me/<?= $data['seller']->phone ?>?text=I%20am%20interested%20in%20buying%20this%20<?=URLROOT.'/'.'users'.'/'.'view_p'.'/'.$data['product']->id?>" class="btn btn-success btn-block"><i class="fa fa-whatsapp fa-fw"></i>Whatsapp</a>
 </div>
 <div class="col d-grid">
 <a href="tel:<?= $data['seller']->phone ?>" class="btn btn-outline-success btn-block"><i class="fa fa-phone fa-fw"></i>Call Now</a>

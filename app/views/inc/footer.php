@@ -12,7 +12,9 @@
                         </li>
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:08181813743">08181813743</a>
+                            <a class="text-decoration-none" href="tel:08033772288">08033772288</a><br>
+                            <i class="fa fa-phone fa-fw"></i>
+                            <a class="text-decoration-none" href="tel:08181221766">08181221766</a>
                         </li>
                         <li>
                             <i class="fa fa-envelope fa-fw"></i>
