@@ -12,7 +12,7 @@
                 </div>
                 <div class="card-body lh-1 fs-6">
                 <a href="<?=URLROOT?>/users/view_p/<?=$product->id?>" class="h3 text-decoration-none">
-                    <?php echo $product->title; ?><br><span class="fs-6 text-muted"><?php echo $product->sub_cate?></span>
+                    <?php echo $product->title; ?><br>
                     <p class="bg-secondary  badge fs-6"><?=$product->cond_tion .'_'.  $product->color?></p>
 
                      <p class="text-center text-success"><b>&#8358;<?php echo $product->price; ?>.00</b></p>
