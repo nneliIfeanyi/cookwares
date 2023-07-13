@@ -125,7 +125,7 @@
 <img class="card-img rounded-circle" src="<?= URLROOT. '/'. $data['seller']->img ?>" style="height: 70px;">
 </div>
 <div class="col-8 lh-1 p-2 mb-2">
-<p class="text-success text-muted"><?= $data['seller']->name ?></p>
+<p class="text-success text-muted">+234<?= $data['seller']->name ?></p>
 <p class="fs-6"><i class="fa fa-map-marker fa-sm"></i> <?= $data['seller']->address ?>.</p>
 <p class="fs-6"><i class="fa fa-truck fa-sm"></i> Delivery services available</p>
 </div>
