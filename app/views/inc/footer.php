@@ -4,7 +4,7 @@
             <div class="row">
 
                 <div class="col-md-4 pt-5">
-                    <h2 class="h4 text-success border-bottom pb-3 border-light logo"><?=SITENAME?></h2>
+                    <h2 class="h4 text-success border-bottom pb-3 border-light logo">Find Us</h2>
                     <ul class="list-unstyled text-light footer-link-list">
                         <li>
                             <i class="fa fa-map-marker fa-fw"></i>
@@ -13,12 +13,6 @@
                         <li>
                             <i class="fa fa-phone fa-fw"></i>
                             <a class="text-decoration-none" href="tel:08033772288">08033772288</a><br>
-                            <i class="fa fa-whatsapp fa-fw"></i>
-                            <a class="text-decoration-none" href="tel:08181221766">08181221766</a>
-                        </li>
-                        <li>
-                            <i class="fa fa-envelope fa-fw"></i>
-                            <a class="text-decoration-none" href="mailto:tochukslegal@gmail.com">tochukslegal@gmail.com</a>
                         </li>
                     </ul>
                 </div>
@@ -30,7 +24,7 @@
                 <div class="row pt-2">
                     <div class="col-12">
                         <p class="text-left text-light">
-                            Copyright &copy; 2023 <?=SITENAME?>
+                            Copyright &copy; 2023 Tony Rock Ventures
                         </p>
                     </div>
                 </div>

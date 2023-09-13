@@ -89,7 +89,7 @@ class Users extends Controller{
   public function view_p($id){
     $products = $this->userModel->getProductById($id);
     $seller = $this->userModel->getUserById($products->s_id);
-    $sellerGoods = $this->userModel->allSellerGoods($products->s_id);
+    $sellerGoods = $this->userModel->relatedGoods($products->category);
     
     $data = [
       'product' => $products,

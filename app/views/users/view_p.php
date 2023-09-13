@@ -76,14 +76,7 @@
 <p class="text-muted"><strong><?= $data['product']->category?></strong></p>
 </li>
 </ul>
-<ul class="list-inline lh-1">
-<li class="list-inline-item">
-<h6>Sub_Category :</h6>
-</li>
-<li class="list-inline-item">
-<p class="text-muted"><strong><?= $data['product']->sub_cate?></strong></p>
-</li>
-</ul>
+
 <ul class="list-inline lh-1">
 <li class="list-inline-item">
 <h6>Condition :</h6>
@@ -100,14 +93,7 @@
 <p class="text-muted"><strong><?= $data['product']->description ?></strong></p>
 </li>
 </ul>
-<ul class="list-inline lh-1">
-<li class="list-inline-item">
-<h6>Color :</h6>
-</li>
-<li class="list-inline-item">
-<p class="text-muted"><strong><?= $data['product']->color ?></strong></p>
-</li>
-</ul>
+
 <ul class="list-inline">
 <li class="list-inline-item">
 <h6>Price :</h6>
@@ -116,27 +102,14 @@
 <p class="text-success fw-bold"><strong>&#8358;<?= $data['product']->price ?>.00</strong></p>
 </li>
 </ul>
-</div>
-</div>
-<div class=" bg-light">
-<p class="lead fw-bold px-3">Seller Info</p> 
-<div class="row">
-<div class="col-4 px-4">
-<img class="card-img rounded-circle" src="<?= URLROOT. '/'. $data['seller']->img ?>" style="height: 70px;">
-</div>
-<div class="col-8 lh-1 p-2 mb-2">
-<p class="text-success text-muted">+234<?= $data['seller']->name ?></p>
-<p class="fs-6"><i class="fa fa-map-marker fa-sm"></i> <?= $data['seller']->address ?>.</p>
-<p class="fs-6"><i class="fa fa-truck fa-sm"></i> Delivery services available</p>
-</div>
-</div>
 
 <div class="row">
 <div class="col d-grid">
-<a href="https://wa.me/<?= $data['seller']->phone ?>?text=I%20am%20interested%20in%20buying%20this%20<?=URLROOT.'/'.'users'.'/'.'view_p'.'/'.$data['product']->id?>" class="btn btn-success btn-block"><i class="fa fa-whatsapp fa-fw"></i>Whatsapp</a>
+<a href="https://wa.me/<?= $data['seller']->phone ?>?text=I%20am%20interested%20in%20buying%20this%20<?=URLROOT.'/'.'users'.'/'.'view_p'.'/'.$data['product']->id?>" class="btn btn-success btn-block"><i class="fab fa-whatsapp fa-fw"></i>Negociate</a>
 </div>
 <div class="col d-grid">
 <a href="tel:<?= $data['seller']->phone ?>" class="btn btn-outline-success btn-block"><i class="fa fa-phone fa-fw"></i>Call Now</a>
+</div>
 </div>
 </div>
 </div>
@@ -144,7 +117,7 @@
 </div>
 </div>
 <div class="mt-3">
-<p class="lead h4 text-center fw-bold py-2">Other Products By <span class="text-success"><?= $data['seller']->name ?></span></p> 
+<p class="lead h4 text-center fw-bold py-2">Related Products</p> 
  <div class="row">
     <?php foreach($data['sellerGoods'] as $product) : ?>
         <div class="col-6 col-md-3">

@@ -1,17 +1,13 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
-<div class="container p-2">
-<h2 class="h5">Welcome back <span class="text-success"><?=$_SESSION['user_name']?></span></h2>
-<!--<p class="fs-6">A platform built for the people, not profits</p>-->
-</div>
     <div class="container py-3">
         <div class="row">
-
-            <?php include APPROOT . '/views/admin/inc.php' ?>
-
+            <div class="col-lg-3">
+                <h2 class="h5">Welcome back <span class="text-success"><?=$_SESSION['user_name']?></span></h2>
+            </div>
             <div class="col-lg-9">
                 
-                <p class="text-center h2">Showcase your products for sale</p>
-                <div class="card card-body bg-light mt-3">
+    <p class="text-center h2">Showcase your products for sale</p>
+    <div class="card card-body bg-light mt-3">
       <p>Please use the form below to add product for sell</p>
       <form action="<?php echo URLROOT; ?>/admin/add" method="post" enctype="multipart/form-data">
         

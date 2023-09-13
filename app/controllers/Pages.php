@@ -34,14 +34,68 @@
 
 
 
-     //====ABOUT PAGE VIEW DISPLAY
-    public function about(){
+     //====
+    public function blenders(){
+      $products = $this->productModel->getBlenders();
+
       $data = [
-        'title' => 'Under Construction',
-        'description' => 'This view is still under construction.'
+        'title' => 'Blenders',
+        'products' => $products,
       ];
 
-      $this->view('pages/about', $data);
+      $this->view('pages/blenders', $data);
+    }
+
+
+
+
+    public function utensils(){
+      $products = $this->productModel->utensils();
+
+      $data = [
+        'title' => 'Utensils',
+        'products' => $products,
+      ];
+
+      $this->view('pages/utensils', $data);
+    }
+
+
+    public function microWaves(){
+      $products = $this->productModel->microWaves();
+
+      $data = [
+        'title' => 'MicroWaves',
+        'products' => $products,
+      ];
+
+      $this->view('pages/microWaves', $data);
+    }
+
+
+
+
+    public function gas_cookers(){
+      $products = $this->productModel->getGas();
+
+      $data = [
+        'title' => 'Gas Burners',
+        'products' => $products,
+      ];
+
+      $this->view('pages/gas_cookers', $data);
+    }
+
+
+    public function others(){
+      $products = $this->productModel->others();
+
+      $data = [
+        'title' => 'Other Categories',
+        'products' => $products,
+      ];
+
+      $this->view('pages/others', $data);
     }
 
 

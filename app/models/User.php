@@ -156,9 +156,9 @@ class User{
     }
 
 
-    public function allSellerGoods($id){
-      $this->db->query("SELECT * FROM products WHERE s_id = :id");
-      $this->db->bind(':id', $id);
+    public function relatedGoods($category){
+      $this->db->query("SELECT * FROM products WHERE category = :id");
+      $this->db->bind(':id', $category);
 
       $row = $this->db->resultset();
 

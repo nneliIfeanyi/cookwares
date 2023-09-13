@@ -15,22 +15,9 @@ class Admin extends Controller {
    //======================
 
    public function index(){
-      $products = $this->productModel->getProducts();
-      $data = [
-        'title' => 'All Products',
-        'products' => $products,
-        'condition' => '',
-        'color' => '',
-        'description' => '',
-        'price' => '',
-        'title' => '',
-        'priceErr' => '',
-        'nameErr' => '',
-        'descErr' => '',
-        'imgErr' => ''
-      ];
-   
-    $this->view('admin/index', $data);
+      
+    redirect('admin/add');
+    //$this->view('admin/index', $data);
     }
   //======================
 
@@ -59,13 +46,21 @@ class Admin extends Controller {
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $_POST = filter_input_array(INPUT_POST, FILTER_DEFAULT);
       $fileName = basename($_FILES["picture"]["name"]);
-      $db_image_file =  $uploadPath . $fileName;   
+      $fileName2 = basename($_FILES["picture2"]["name"]);
+      $fileName3 = basename($_FILES["picture3"]["name"]);
+      $db_image_file =  $uploadPath . $fileName; 
+      $db_image_file2 =  $uploadPath . $fileName2; 
+      $db_image_file3 =  $uploadPath . $fileName3;  
       $imageUploadPath = $uploadPath . $fileName; 
-      $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION);  
+      $imageUploadPath2 = $uploadPath . $fileName2;
+      $imageUploadPath3 = $uploadPath . $fileName3;
+      $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION);
+      $fileType2 = pathinfo($imageUploadPath2, PATHINFO_EXTENSION);
+      $fileType3 = pathinfo($imageUploadPath3, PATHINFO_EXTENSION);  
          
       // Allow certain file formats 
       $allowTypes = array('jpg','png','jpeg'); 
-      if(!in_array($fileType, $allowTypes) ){ 
+      if(!in_array($fileType, $allowTypes) || !in_array($fileType2, $allowTypes) || !in_array($fileType3, $allowTypes)){ 
         
          flash('msg', 'INVALID IMAGE TYPE');
          redirect('admin/add');
@@ -73,21 +68,25 @@ class Admin extends Controller {
           
       }else{ 
           $imageTemp = $_FILES["picture"]["tmp_name"];
+          $imageTemp2 = $_FILES["picture2"]["tmp_name"];
+          $imageTemp3 = $_FILES["picture3"]["tmp_name"]; 
            
           // Compress size and upload image 
-          compressImage($imageTemp, $imageUploadPath, 9); 
+          compressImage($imageTemp, $imageUploadPath, 9);
+          compressImage($imageTemp2, $imageUploadPath2, 9);
+          compressImage($imageTemp3, $imageUploadPath3, 9); 
 
           $data = [
             'user_id' => $_SESSION['user_id'],
             'user_name' => $_SESSION['user_name'],
-            'category' => 'Kitchen Wares',
-            'sub_cate' => $_POST['sub_category'],
+            'category' => $_POST['category'],
             'condition' => $_POST['condition'],
-            'title' => $_POST['title'],
+            'product_name' => $_POST['name'],
             'image' => $db_image_file,
+            'image2' => $db_image_file2,
+            'image3' => $db_image_file3,
             'description' => trim($_POST['description']),
-            'price' => trim($_POST['price']),
-            'color' => trim($_POST['color'])
+            'price' => trim($_POST['price'])
           ];
 
           if($this->productModel->add_product($data)){
@@ -102,11 +101,13 @@ class Admin extends Controller {
     }else{
        
         $data = [
+          'category' => '',
           'condition' => '',
+          'model' => '',
           'color' => '',
           'description' => '',
           'price' => '',
-          'title' => '',
+          'brand' => '',
           'priceErr' => '',
           'nameErr' => '',
           'descErr' => '',
@@ -133,22 +134,22 @@ class Admin extends Controller {
         $fileName3 = basename($_FILES["picture3"]["name"]);
         if (!empty($fileName) || !empty($fileName2) || !empty($fileName3)) {
       
-      $db_image_file =  $uploadPath . $fileName; 
-      $db_image_file2 =  $uploadPath . $fileName2; 
-      $db_image_file3 =  $uploadPath . $fileName3;  
-      $imageUploadPath = $uploadPath . $fileName; 
-      $imageUploadPath2 = $uploadPath . $fileName2;
-      $imageUploadPath3 = $uploadPath . $fileName3;
-      $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION);
-      $fileType2 = pathinfo($imageUploadPath2, PATHINFO_EXTENSION);
-      $fileType3 = pathinfo($imageUploadPath3, PATHINFO_EXTENSION);  
+        $db_image_file =  $uploadPath . $fileName; 
+        $db_image_file2 =  $uploadPath . $fileName2; 
+        $db_image_file3 =  $uploadPath . $fileName3;  
+        $imageUploadPath = $uploadPath . $fileName; 
+        $imageUploadPath2 = $uploadPath . $fileName2;
+        $imageUploadPath3 = $uploadPath . $fileName3;
+        $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION);
+        $fileType2 = pathinfo($imageUploadPath2, PATHINFO_EXTENSION);
+        $fileType3 = pathinfo($imageUploadPath3, PATHINFO_EXTENSION);  
          
-      // Allow certain file formats 
-      $allowTypes = array('jpg','png','jpeg'); 
-      if(!in_array($fileType, $allowTypes) || !in_array($fileType2, $allowTypes) || !in_array($fileType3, $allowTypes)){ 
-        
-         flash('msg', 'INVALID IMAGE TYPE');
-         redirect('admin/edit/$id');
+        // Allow certain file formats 
+        $allowTypes = array('jpg','png','jpeg'); 
+        if(!in_array($fileType, $allowTypes) || !in_array($fileType2, $allowTypes) || !in_array($fileType3, $allowTypes)){ 
+          
+           flash('msg', 'INVALID IMAGE TYPE');
+           redirect('admin/edit/$id');
          
           
       }else{ 
@@ -211,7 +212,6 @@ class Admin extends Controller {
        }else {
         // Get post from model
         $products = $this->productModel->getById($id);
-        $access = $this->userModel->getUserById($_SESSION['user_id']);
 
         // Check for owner
         if($products->s_id != $_SESSION['user_id']){

@@ -1,8 +1,7 @@
 <?php require APPROOT . '/views/inc/header.php'; ?>
 <div class="container pt-3">
 <div class="row">
-<?php include APPROOT . '/views/admin/inc.php' ?>
-  <div class="col-md-9 mb-5 mx-auto">
+  <div class="col-md-10 mb-5 mx-auto">
   <h2 class="text-center mt-2">Update Product</h2>
     <div class="card card-body bg-light mt-3">
       <p class="text-muted lh-1">Please note that you cannot edit the <span class="text-success">category</span> and <span class="text-success">condition</span> of the product</br>
@@ -25,10 +24,7 @@
             <input type="text" name="description" class="form-control form-control-lg <?php echo (!empty($data['desc_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['product']->description; ?>">
             <span class="invalid-feedback"><?php echo $data['desc_err']; ?></span>
         </div>
-        <div class="form-group">
-            <label>Color:</label>
-            <input type="text" name="color" class="form-control form-control-lg" value="<?php echo $data['product']->color; ?>">
-        </div> 
+        
         <div class="form-group mb-2">
             <label>Price</label>
             <input type="number" name="price" class="form-control form-control-lg <?php echo (!empty($data['price_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['product']->price; ?>">

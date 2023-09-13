@@ -8,7 +8,7 @@
   // App Root
   define('APPROOT', dirname(dirname(__FILE__)));
   // URL Root
-  define('URLROOT', 'http://localhost/tonyrock');
+  define('URLROOT', 'http://localhost/cookwares');
   // Site Name
   define('SITENAME', 'COOKWARES');
  
