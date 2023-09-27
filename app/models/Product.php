@@ -96,7 +96,7 @@ class Product {
       }
 
       public function utensils(){
-        $this->db->query("SELECT * FROM products WHERE category = 'utensils' ORDER BY id DESC");
+        $this->db->query("SELECT * FROM products WHERE category = 'Utensils' ORDER BY id DESC");
 
         $results = $this->db->resultset();
   

@@ -219,7 +219,6 @@ class Admin extends Controller {
         }
        $data = [
           'product' => $products,
-          'access' => $access,
            
           ]; 
 
