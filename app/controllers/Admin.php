@@ -7,9 +7,6 @@ class Admin extends Controller {
   public function __construct(){
       $this->productModel = $this->model('Product');
       $this->userModel = $this->model('User');
-      if(!isset($_SESSION['user_id'])){
-        redirect('users/login');
-    }
   }
 
    //======================
@@ -17,7 +14,6 @@ class Admin extends Controller {
    public function index(){
       
     redirect('admin/add');
-    //$this->view('admin/index', $data);
     }
   //======================
 
@@ -42,6 +38,10 @@ class Admin extends Controller {
 //======================
 
   public function add(){
+
+    if(!isset($_SESSION['user_id'])){
+      redirect('users/login');
+    }
      $uploadPath = "uploaded/";
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $_POST = filter_input_array(INPUT_POST, FILTER_DEFAULT);

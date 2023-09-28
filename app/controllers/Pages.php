@@ -61,7 +61,7 @@
     }
 
 
-    public function microWaves(){
+    public function microwaves(){
       $products = $this->productModel->microWaves();
 
       $data = [
@@ -69,7 +69,7 @@
         'products' => $products,
       ];
 
-      $this->view('pages/microWaves', $data);
+      $this->view('pages/microwaves', $data);
     }
 
 

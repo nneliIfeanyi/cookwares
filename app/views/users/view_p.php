@@ -105,10 +105,10 @@
 
 <div class="row">
 <div class="col d-grid">
-<a href="https://wa.me/<?= $data['seller']->phone ?>?text=I%20am%20interested%20in%20buying%20this%20<?=URLROOT.'/'.'users'.'/'.'view_p'.'/'.$data['product']->id?>" class="btn btn-success btn-block"><i class="fab fa-whatsapp fa-fw"></i>Negociate</a>
+<a href="https://wa.me/+234<?= $data['seller']->phone ?>?text=I%20am%20interested%20in%20buying%20this%20<?=URLROOT.'/'.'users'.'/'.'view_p'.'/'.$data['product']->id?>" class="btn btn-success btn-block"><i class="fab fa-whatsapp fa-fw"></i>Negociate</a>
 </div>
 <div class="col d-grid">
-<a href="tel:<?= $data['seller']->phone ?>" class="btn btn-outline-success btn-block"><i class="fa fa-phone fa-fw"></i>Call Now</a>
+<a href="tel:0<?= $data['seller']->phone ?>" class="btn btn-outline-success btn-block"><i class="fa fa-phone fa-fw"></i>Call Now</a>
 </div>
 </div>
 </div>
