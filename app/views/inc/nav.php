@@ -1,4 +1,4 @@
-            <div class="col-lg-3">
+<!--  <div class="col-lg-3">
                 <h1 class="h2 pb-2 fw-bold">Products</h1>
                 <ul class="list-unstyled templatemo-accordion">
                     <li class="pb-2">
@@ -25,4 +25,31 @@
                         </ul>
                     </li>
                 </ul>
-            </div>
+            </div>-->
+ <nav class="navbar navbar-expand-sm navbar-dark bg-dark">
+  <div class="container">
+    <a class="navbar-brand" href="<?php echo URLROOT; ?>/pages"><?php echo SITENAME; ?></a>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+          <ul class="navbar-nav ms-auto">
+          
+            <li class="nav-item">
+              <a class="nav-link text-white" href="<?=URLROOT?>/admin">Add Products</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link text-white" href="<?=URLROOT?>/admin/show">All products</a>
+            </li>
+             <li class="nav-item">
+              <a class="nav-link text-white" href="<?=URLROOT?>/admin/setting">setting</a>
+            </li>
+           
+            <li class="nav-item">
+              <a class="nav-link text-white" href="<?=URLROOT?>/users/logout">More</a>
+            </li>
+          </ul>
+          
+        </div>
+  </div>
+</nav>

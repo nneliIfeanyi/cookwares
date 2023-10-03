@@ -26,7 +26,7 @@ transform: translateX(-100%);
 }
 </style>
  
-<div class="cssmarquee" style="background: ;">
+<div class="cssmarquee">
 <h1 style="text-transform: lowercase;font-style: italic;">WELCOME TO <span class="text-success">Tony-rock</span> online market</h1>
 </div>
 <?php include APPROOT . '/views/inc/showcase.php'; ?>

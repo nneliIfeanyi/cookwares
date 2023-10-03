@@ -12,7 +12,7 @@ class Users extends Controller{
   public function login(){
     if($this->isLoggedIn()){
         flash('login_success', 'You are Logged in.');
-        redirect('admin');
+        redirect('admin/add');
       }
     // Check if POST
     if($_SERVER['REQUEST_METHOD'] == 'POST'){
@@ -82,7 +82,7 @@ class Users extends Controller{
     $_SESSION['user_phone'] = $user->phone; 
     $_SESSION['user_name'] = $user->name;
     $_SESSION['address'] = $user->address;
-    redirect('pages');
+    redirect('admin/add');
   }
 
 

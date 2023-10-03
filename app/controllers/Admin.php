@@ -12,7 +12,6 @@ class Admin extends Controller {
    //======================
 
    public function index(){
-      
     redirect('admin/add');
     }
   //======================
@@ -39,9 +38,10 @@ class Admin extends Controller {
 
   public function add(){
 
-    if(!isset($_SESSION['user_id'])){
+    if(!$this->isLoggedIn()){
       redirect('users/login');
     }
+
      $uploadPath = "uploaded/";
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $_POST = filter_input_array(INPUT_POST, FILTER_DEFAULT);
@@ -373,6 +373,15 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
      
       $this->view('admin/reset_pwd', $data);
     }
+
+    // Check Logged In
+  public function isLoggedIn(){
+    if(isset($_SESSION['user_id'])){
+      return true;
+    } else {
+      return false;
+    }
+  }
 
   public function logout(){
 
