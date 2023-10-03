@@ -27,7 +27,6 @@ class Admin extends Controller {
     $data = [
       'title' => 'All Products',
       'products' => $products,
-      'user_id' => $_SESSION['user_id']
     ];
    
     $this->view('admin/show', $data);
@@ -37,10 +36,6 @@ class Admin extends Controller {
 //======================
 
   public function add(){
-
-    if(!$this->isLoggedIn()){
-      redirect('users/login');
-    }
 
      $uploadPath = "uploaded/";
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
@@ -77,8 +72,6 @@ class Admin extends Controller {
           compressImage($imageTemp3, $imageUploadPath3, 9); 
 
           $data = [
-            'user_id' => $_SESSION['user_id'],
-            'user_name' => $_SESSION['user_name'],
             'category' => $_POST['category'],
             'condition' => $_POST['condition'],
             'product_name' => $_POST['name'],
@@ -212,12 +205,7 @@ class Admin extends Controller {
        }else {
         // Get post from model
         $products = $this->productModel->getById($id);
-
-        // Check for owner
-        if($products->s_id != $_SESSION['user_id']){
-          redirect('admin/show');
-        }
-       $data = [
+        $data = [
           'product' => $products,
            
           ]; 
@@ -245,153 +233,5 @@ class Admin extends Controller {
     }
 
 
-
-
-
-public function setting(){
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-   $data = [
-      'id' => $_SESSION['user_id'],
-      'name' => trim($_POST['name']),
-      'phone' => trim($_POST['phone']),
-      'address' => trim($_POST['address']),
-    ]; 
-
-    if ($this->userModel->edit_profile($data) ) {
-      $_SESSION['user_phone'] = trim($_POST['phone']); 
-      $_SESSION['user_name'] = trim($_POST['name']);
-      $_SESSION['address'] = trim($_POST['address']);
-     flash('success', 'Update saved');
-     redirect('admin/setting');
-    }
-
-}else{ 
-
-//NOT A POST REQUEST
- $user =$this->userModel->getUserById($_SESSION['user_id']);
-  $data = [
-  'user' => $user,
-   'nameErr' =>'',
-   'phone_err' =>'',
-   'address_err' =>'', 
-  ];
-   
-  $this->view('admin/setting', $data);
-}
-}
-
-public function update_pic(){
-if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-  $uploadPath = "pics/";
-   $fileName = basename($_FILES["picture"]["name"]); 
-    $db_image_file =  $uploadPath . $fileName; 
-    $imageUploadPath = $uploadPath . $fileName; 
-    $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION); 
-       
-    // Allow certain file formats 
-    $allowTypes = array('jpg','png','jpeg'); 
-
-    if(!in_array($fileType, $allowTypes)){ 
-      
-       flash('msg', 'INVALID IMAGE TYPE');
-       redirect('admin/setting');
-       
-        
-    }else{ 
-        $imageTemp = $_FILES["picture"]["tmp_name"]; 
-         
-        // Compress size and upload image 
-        compressImage($imageTemp, $imageUploadPath, 9); 
-        $data = [
-          'id' => $_SESSION['user_id'],
-           'image' => $db_image_file,
-        ]; 
-
-        if($this->userModel->edit_pic($data)){
-        
-          flash('success', 'Update Successfull');
-          redirect('admin/setting');
-        } else {
-          die('Something went wrong');
-        }
-
-    }
-
-    }else{ 
-
-    //NOT A POST REQUEST
-     $user =$this->userModel->getUserById($_SESSION['user_id']);
-      $data = [
-      'user' => $user, 
-      ];
-       
-      $this->view('admin/update_pic', $data);
-    }
-  }
-
-
-
-
-
-
-
-  public function reset_pwd(){
-       if (!isset($_SESSION['user_id'])) {
-          redirect('pages');
-        }
-
-        if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-          $_POST  = filter_input_array(INPUT_POST, FILTER_SANITIZE_STRING);
-          
-          $data = [     
-            'id' => $_SESSION['user_id'],
-            'password' => trim($_POST['password']),
-            'password_err' => '',
-          ];
-
-           if(empty($data['password'])){
-            $data['password_err'] = 'Please enter new password.';
-            $this->view('admin/reset_pwd', $data);
-          }elseif(strlen($data['password']) < 6 ){
-            $data['password_err'] = 'Too short, must be more than 5 digits.';
-            $this->view('admin/reset_pwd', $data);
-          }else{
-
-              $this->userModel->new_pass1($data);
-                flash('success', 'Password saved');
-                redirect('admin/setting');
-          }
-
-        }
-      
-      $data = [
-
-        'password' => '',
-        'password_err' => '',
-
-      ];
-     
-      $this->view('admin/reset_pwd', $data);
-    }
-
-    // Check Logged In
-  public function isLoggedIn(){
-    if(isset($_SESSION['user_id'])){
-      return true;
-    } else {
-      return false;
-    }
-  }
-
-  public function logout(){
-
-    unset($_SESSION['user_id']);
-    unset($_SESSION['user_phone']); 
-    unset($_SESSION['user_name']);
-    unset($_SESSION['address']);
-    session_destroy();
-    redirect('users/login');
-
-  }
-
+  
 }

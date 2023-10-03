@@ -1,6 +1,6 @@
 <?php
 session_start();
-
+//session_destroy();
 // Flash message helper
 function flash($name = '', $message = '', $class = 'alert alert-success'){
   if(!empty($name)){

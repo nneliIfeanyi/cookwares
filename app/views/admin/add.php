@@ -2,7 +2,7 @@
         <div class="container pt-3">
         <div class="row">
              <div class="col-lg-3">
-                <h2 class="h5">Welcome back <span class="text-success"><?=$_SESSION['user_name']?></span></h2>
+                <h2 class="h5">Welcome back</h2>
             </div>
         <div class="col-md-9 mb-5 mx-auto">
             <p class="text-center h2">Showcase your products for sale</p>

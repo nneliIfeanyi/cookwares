@@ -8,7 +8,7 @@ class Product {
     }
 
     public function add_product($data){
-        $this->db->query('INSERT INTO products (title,description,category,price,img,img2,img3,cond_tion,s_id) VALUES(:title,:description,:category,:price,:img,:img2,:img3,:condition,:user_id)');
+        $this->db->query('INSERT INTO products (title,description,category,price,img,img2,img3,cond_tion) VALUES(:title,:description,:category,:price,:img,:img2,:img3,:condition)');
         $this->db->bind(':title', $data['product_name']);
         $this->db->bind(':description', $data['description']);
         $this->db->bind(':category', $data['category']);
@@ -17,7 +17,6 @@ class Product {
         $this->db->bind(':img2', $data['image2']);
         $this->db->bind(':img3', $data['image3']);
         $this->db->bind(':condition', $data['condition']);
-        $this->db->bind(':user_id', $data['user_id']);
         
         if ($this->db->execute()) {
             return true;
