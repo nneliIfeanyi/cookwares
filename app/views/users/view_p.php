@@ -68,23 +68,23 @@
 <div class="card">
 <div class="card-body lh-1">
 <h1 class="h3"><?= $data['product']->title ?></h1>
-<ul class="list-inline lh-1">
+<!--<ul class="list-inline lh-1">
 <li class="list-inline-item">
 <h6>Category :</h6>
 </li>
 <li class="list-inline-item">
 <p class="text-muted"><strong><?= $data['product']->category?></strong></p>
 </li>
-</ul>
+</ul>-->
 
-<ul class="list-inline lh-1">
+<!--<ul class="list-inline lh-1">
 <li class="list-inline-item">
 <h6>Condition :</h6>
 </li>
 <li class="list-inline-item">
 <p class="text-muted"><strong><?= $data['product']->cond_tion ?></strong></p>
 </li>
-</ul>
+</ul>-->
 <ul class="list-inline lh-1">
 <li class="list-inline-item">
 <h6>Description :</h6>
@@ -105,10 +105,10 @@
 
 <div class="row">
 <div class="col d-grid">
-<a href="https://wa.me/+234<?= $data['seller']->phone ?>?text=I%20am%20interested%20in%20buying%20this%20<?=URLROOT.'/'.'users'.'/'.'view_p'.'/'.$data['product']->id?>" class="btn btn-success btn-block"><i class="fab fa-whatsapp fa-fw"></i>Negociate</a>
+<a href="https://wa.me/+2347061707267?text=I%20am%20interested%20in%20buying%20this%20<?=URLROOT.'/'.'users'.'/'.'view_p'.'/'.$data['product']->id?>" class="btn btn-success btn-block"><i class="fab fa-whatsapp fa-fw"></i>Negociate</a>
 </div>
 <div class="col d-grid">
-<a href="tel:0<?= $data['seller']->phone ?>" class="btn btn-outline-success btn-block"><i class="fa fa-phone fa-fw"></i>Call Now</a>
+<a href="tel:07061707267" class="btn btn-outline-success btn-block"><i class="fa fa-phone fa-fw"></i>Call Now</a>
 </div>
 </div>
 </div>

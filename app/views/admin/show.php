@@ -9,14 +9,14 @@
                 <h4 class="display-6 text-center">All Products</h4>
                  <div class="mt-2 text-center"><?= flash('msg')?></div>
             <?php foreach($data['products'] as $product) : ?>
-                 <div class="col-4 col-md-2">
+                 <div class="col-6 col-md-3">
                     <div class="card mb-4 product-wap rounded-0">
                         <div class="card rounded-0">
                             <img class="card-img rounded-0" height="140" src="<?php echo URLROOT . '/' . $product->img; ?>">
                         </div>
                         <div class="card-body">
-                            <a href="" class="h3 text-decoration-none"><?php echo $product->title ;?></a>
-                   
+                        <a href="" class="h3 text-decoration-none"><?php echo $product->title ;?></a>
+                        <p class="text-center mb-0"><?php echo $product->description; ?></p>
                     <p class="text-center mb-0">&#8358;<?php echo $product->price; ?>.00</p>
                     <div class="row mb-2">
                         <div class="col">

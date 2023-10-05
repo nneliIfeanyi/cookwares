@@ -12,7 +12,7 @@ class Admin extends Controller {
    //======================
 
    public function index(){
-    redirect('admin/add');
+    header("location: ".URLROOT."/admin/add");
     }
   //======================
 
@@ -84,7 +84,8 @@ class Admin extends Controller {
 
           if($this->productModel->add_product($data)){
             flash('success', 'Add Product Successfull');
-            redirect('admin/show');
+            header("location: ".URLROOT."/admin/show");
+            //redirect('admin/show');
           } else {
             die('Something went wrong');
           } 
@@ -142,7 +143,8 @@ class Admin extends Controller {
         if(!in_array($fileType, $allowTypes) || !in_array($fileType2, $allowTypes) || !in_array($fileType3, $allowTypes)){ 
           
            flash('msg', 'INVALID IMAGE TYPE');
-           redirect('admin/edit/$id');
+           header("location: ".URLROOT."/admin/edit/$id");
+           //redirect('admin/edit/$id');
          
           
       }else{ 
@@ -172,7 +174,8 @@ class Admin extends Controller {
         if($this->productModel->update($data)){
           
           flash('success', 'Changes made Successfull');
-          redirect('admin/show');
+          header("location: ".URLROOT."/admin/show");
+          //redirect('admin/show');
         } else {
           die('Something went wrong');
         }
@@ -192,7 +195,8 @@ class Admin extends Controller {
   
         if($this->productModel->update1($data)){
           flash('success', 'Changes made Successfull');
-          redirect('admin/show');
+          header("location: ".URLROOT."/admin/show");
+          //redirect('admin/show');
         } else {
           die('Something went wrong');
 
@@ -223,7 +227,8 @@ class Admin extends Controller {
         if($this->productModel->deleteProduct($id)){
           // Redirect to login
           flash('success', 'Product Removed', 'alert alert-danger');
-          redirect('admin/show');
+          header("location: ".URLROOT."/admin/show");
+          //redirect('admin/show');
           } else {
             die('Something went wrong');
           }

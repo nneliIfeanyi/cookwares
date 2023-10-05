@@ -37,7 +37,6 @@
         <div class="form-group">
             <label>Condition:</label><br>
             <select name="condition" class="form-control form-control-lg">
-                <option>--Please select--</option>
                 <option value="brandnew">Brand New</option>
                 <option value="UKused">London Used</option>
                 <option value="secondhand">2nd Hand</option>
