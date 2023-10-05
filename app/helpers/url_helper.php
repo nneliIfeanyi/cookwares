@@ -2,7 +2,7 @@
   // Simple page redirect
   function redirect($page){
     ?>
-      <meta http-equiv='refresh' content='.9; <?php echo URLROOT . '/' . $page ; ?>'>
+      <meta http-equiv='refresh' content='.2; <?php echo URLROOT . '/' . $page ; ?>'>
     <?php
   }
 
