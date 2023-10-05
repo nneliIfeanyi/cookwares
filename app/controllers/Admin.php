@@ -12,7 +12,8 @@ class Admin extends Controller {
    //======================
 
    public function index(){
-    header("location: ".URLROOT."/admin/add");
+    
+    redirect('admin/add');
     }
   //======================
 
