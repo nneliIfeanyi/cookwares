@@ -41,6 +41,7 @@ class Admin extends Controller {
      $uploadPath = "uploaded/";
     if ($_SERVER['REQUEST_METHOD'] == 'POST') {
       $_POST = filter_input_array(INPUT_POST, FILTER_DEFAULT);
+
       $fileName = basename($_FILES["picture"]["name"]);
       $fileName2 = basename($_FILES["picture2"]["name"]);
       $fileName3 = basename($_FILES["picture3"]["name"]);
@@ -53,13 +54,18 @@ class Admin extends Controller {
       $fileType = pathinfo($imageUploadPath, PATHINFO_EXTENSION);
       $fileType2 = pathinfo($imageUploadPath2, PATHINFO_EXTENSION);
       $fileType3 = pathinfo($imageUploadPath3, PATHINFO_EXTENSION);  
-         
+      $data = [
+        'category' => $_POST['category'],
+        'title' => $_POST['name'],
+        'image' => $db_image_file,
+        'image2' => $db_image_file2,
+        'image3' => $db_image_file3,
+      ];  
       // Allow certain file formats 
       $allowTypes = array('jpg','png','jpeg'); 
       if(!in_array($fileType, $allowTypes) || !in_array($fileType2, $allowTypes) || !in_array($fileType3, $allowTypes)){ 
-        
-         flash('msg', 'INVALID IMAGE TYPE');
-         redirect('admin/add');
+        $data['err'] = 'Pls. Upload product image';
+        $this->view('admin/add', $data);
          
           
       }else{ 
@@ -71,17 +77,6 @@ class Admin extends Controller {
           compressImage($imageTemp, $imageUploadPath, 9);
           compressImage($imageTemp2, $imageUploadPath2, 9);
           compressImage($imageTemp3, $imageUploadPath3, 9); 
-
-          $data = [
-            'category' => $_POST['category'],
-            'condition' => $_POST['condition'],
-            'product_name' => $_POST['name'],
-            'image' => $db_image_file,
-            'image2' => $db_image_file2,
-            'image3' => $db_image_file3,
-            'description' => trim($_POST['description']),
-            'price' => trim($_POST['price'])
-          ];
 
           if($this->productModel->add_product($data)){
             flash('success', 'Add Product Successfull');
@@ -95,19 +90,10 @@ class Admin extends Controller {
     }else{
        
         $data = [
+          'title' => '',
           'category' => '',
-          'condition' => '',
-          'model' => '',
-          'color' => '',
-          'description' => '',
-          'price' => '',
-          'brand' => '',
-          'priceErr' => '',
-          'nameErr' => '',
-          'descErr' => '',
-          'imgErr' => ''
-
-          
+          'title_err' => '',
+          'err' => ''
         ]; 
 
         //Load View
@@ -158,15 +144,11 @@ class Admin extends Controller {
 
         $data = [
           'id' => $id,
-          'category' => $_POST['category'],
-          'condition' => $_POST['condition'],
           'title' => $_POST['title'],
+          'category' => $_POST['category'],
           'image' => $db_image_file,
           'image2' => $db_image_file2,
-          'image3' => $db_image_file3,
-          'description' => trim($_POST['description']),
-          'price' => trim($_POST['price']),
-          'color' => trim($_POST['color']),
+          'image3' => $db_image_file3
           
         ]; 
   
@@ -183,11 +165,7 @@ class Admin extends Controller {
         $data = [
           'id' => $id,
           'category' => $_POST['category'],
-          'condition' => $_POST['condition'],
-          'title' => $_POST['title'],
-          'description' => trim($_POST['description']),
-          'price' => trim($_POST['price']),
-          'color' => trim($_POST['color']),
+          'title' => $_POST['title']
   
         ]; 
   

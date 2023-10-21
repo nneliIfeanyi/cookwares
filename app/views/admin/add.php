@@ -13,9 +13,10 @@
       <p>Please use the form below to add product for sell</p>
         <form action="<?php echo URLROOT; ?>/admin/add" method="post" enctype="multipart/form-data">
         
-        <div class="form-group mb-2">
+        <div class="form-group mb-3">
             <label>Category</label><br>
-            <select class="custom-select" name="category">
+            <select class="form-select" name="category" required>
+            <option value="">Select category</option>
                 <option value="Blenders">Blenders</option>
                 <option value="Utensils">Utensils</option>
                 <option value="Gas cooker">Gas cooker</option>
@@ -24,47 +25,30 @@
             </select>
         </div>
         
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label>Product name</label>
-            <input type="text" name="name" class="form-control form-control-lg <?php echo (!empty($data['brand_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['brand']; ?>">
-            <span class="invalid-feedback"><?php echo $data['brand_err']; ?></span>
-        </div>  
-        <div class="form-group">
-            <label>description</label>
-            <input type="text" name="description" class="form-control form-control-lg <?php echo (!empty($data['desc_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['description']; ?>">
-            <span class="invalid-feedback"><?php echo $data['desc_err']; ?></span>
-        </div>
-        <div class="form-group">
-            <label>Condition:</label><br>
-            <select name="condition" class="form-control form-control-lg">
-                <option value="brandnew">Brand New</option>
-                <option value="UKused">London Used</option>
-                <option value="secondhand">2nd Hand</option>
-            </select>
-        </div>
-        
-        <div class="form-group mb-2">
-            <label>Price</label>
-            <input type="number" name="price" class="form-control form-control-lg <?php echo (!empty($data['price_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['price']; ?>">
-            <span class="invalid-feedback"><?php echo $data['price_err']; ?></span>
+            <input type="text" name="name" required class="form-control form-control-lg <?php echo (!empty($data['title_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['title']; ?>">
+            <span class="invalid-feedback"><?php echo $data['title_err']; ?></span>
         </div>
 
         <div class="form-group">
             <label>Product Pic</label>
-            <input type="file" name="picture" class="form-control form-control-lg" >
+            <input type="file" name="picture" class="form-control form-control-lg <?php echo (!empty($data['err'])) ? 'is-invalid' : ''; ?>" >
+            <span class="invalid-feedback"><?php echo $data['err']; ?></span>
         </div>   
         <div class="form-group">
             <label>Product Pic</label>
-            <input type="file" name="picture2" class="form-control form-control-lg" >
+            <input type="file" name="picture2" class="form-control form-control-lg">
         </div> 
         <div class="form-group">
             <label>Product Pic</label>
-            <input type="file" name="picture3" class="form-control form-control-lg" >
+            <input type="file" name="picture3" class="form-control form-control-lg <?php echo (!empty($data['title_err'])) ? 'is-invalid' : ''; ?>">
+            <span class="invalid-feedback"><?php echo $data['err']; ?></span>
         </div> 
         <div class="form-row text-center">
           <div class="col mt-2">
             <input type="submit" class="btn btn-success btn-block" value="Proceed">
-          </div>
+    </div>
         </div>
       </form>
      

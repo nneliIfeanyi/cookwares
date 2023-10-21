@@ -68,44 +68,10 @@
 <div class="card">
 <div class="card-body lh-1">
 <h1 class="h3"><?= $data['product']->title ?></h1>
-<!--<ul class="list-inline lh-1">
-<li class="list-inline-item">
-<h6>Category :</h6>
-</li>
-<li class="list-inline-item">
-<p class="text-muted"><strong><?= $data['product']->category?></strong></p>
-</li>
-</ul>-->
-
-<!--<ul class="list-inline lh-1">
-<li class="list-inline-item">
-<h6>Condition :</h6>
-</li>
-<li class="list-inline-item">
-<p class="text-muted"><strong><?= $data['product']->cond_tion ?></strong></p>
-</li>
-</ul>-->
-<ul class="list-inline lh-1">
-<li class="list-inline-item">
-<h6>Description :</h6>
-</li>
-<li class="list-inline-item">
-<p class="text-muted"><strong><?= $data['product']->description ?></strong></p>
-</li>
-</ul>
-
-<ul class="list-inline">
-<li class="list-inline-item">
-<h6>Price :</h6>
-</li>
-<li class="list-inline-item">
-<p class="text-success fw-bold"><strong>&#8358;<?= $data['product']->price ?>.00</strong></p>
-</li>
-</ul>
 
 <div class="row">
 <div class="col d-grid">
-<a href="https://wa.me/+2347061707267?text=I%20am%20interested%20in%20buying%20this%20<?=URLROOT.'/'.'users'.'/'.'view_p'.'/'.$data['product']->id?>" class="btn btn-success btn-block"><i class="fab fa-whatsapp fa-fw"></i>Negociate</a>
+<a href="https://wa.me/+2347061707267?text=I%20am%20interested%20in%20buying%20this%20<?=URLROOT.'/'.'users'.'/'.'view_p'.'/'.$data['product']->id?>" class="btn btn-success btn-block"><i class="fab fa-whatsapp fa-fw"></i>Inquiry</a>
 </div>
 <div class="col d-grid">
 <a href="tel:07061707267" class="btn btn-outline-success btn-block"><i class="fa fa-phone fa-fw"></i>Call Now</a>

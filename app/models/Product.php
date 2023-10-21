@@ -8,15 +8,12 @@ class Product {
     }
 
     public function add_product($data){
-        $this->db->query('INSERT INTO products (title,description,category,price,img,img2,img3,cond_tion) VALUES(:title,:description,:category,:price,:img,:img2,:img3,:condition)');
-        $this->db->bind(':title', $data['product_name']);
-        $this->db->bind(':description', $data['description']);
+        $this->db->query('INSERT INTO products (title,category,img,img2,img3) VALUES(:title,:category,:img,:img2,:img3)');
+        $this->db->bind(':title', $data['title']);
         $this->db->bind(':category', $data['category']);
-        $this->db->bind(':price', $data['price']);
         $this->db->bind(':img', $data['image']);
         $this->db->bind(':img2', $data['image2']);
         $this->db->bind(':img3', $data['image3']);
-        $this->db->bind(':condition', $data['condition']);
         
         if ($this->db->execute()) {
             return true;
@@ -31,13 +28,12 @@ class Product {
     // Update Post
     public function update($data){
       // Prepare Query
-      $this->db->query('UPDATE products SET title = :title, description = :des, price = :price, img = :image, img2 = :image2, img3 = :image3 WHERE id = :id');
+      $this->db->query('UPDATE products SET title = :title, category = :category, img = :image, img2 = :image2, img3 = :image3 WHERE id = :id');
 
       // Bind Values
       $this->db->bind(':id', $data['id']);
       $this->db->bind(':title', $data['title']);
-      $this->db->bind(':des', $data['description']);
-      $this->db->bind(':price', $data['price']);
+      $this->db->bind(':category', $data['category']);
       $this->db->bind(':image', $data['image']);
       $this->db->bind(':image2', $data['image2']);
       $this->db->bind(':image3', $data['image3']);
@@ -53,14 +49,12 @@ class Product {
      // Update without image
     public function update1($data){
       // Prepare Query
-      $this->db->query('UPDATE products SET title = :title, description = :des, price = :price, color = :color WHERE id = :id');
+      $this->db->query('UPDATE products SET title = :title, category = :category WHERE id = :id');
 
       // Bind Values
       $this->db->bind(':id', $data['id']);
       $this->db->bind(':title', $data['title']);
-      $this->db->bind(':des', $data['description']);
-      $this->db->bind(':price', $data['price']);
-      $this->db->bind(':color', $data['color']);
+      $this->db->bind(':category', $data['category']);
       
       //Execute
       if($this->db->execute()){

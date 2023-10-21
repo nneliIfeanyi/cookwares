@@ -8,28 +8,22 @@
       <p class="text-muted fs-6 lh-1">To edit <span class="text-success">category</span> and <span class="text-success">condition</span> simple delete the product and add again.</p>
       <form action="<?php echo URLROOT; ?>/admin/edit/<?php echo $data['product']->id;?>" method="post" enctype="multipart/form-data">
 
-      <div class="form-group">
+      <div class="form-group mb-3">
             <label>Category</label><br>
-            <select name="category" class="form-select" aria-label="Disabled select example" disabled>
-                <option value="smartphone">Select category</option>
+            <select class="form-select" name="category">
+            <option value="<?php echo $data['product']->category; ?>"><?php echo $data['product']->category; ?></option>
+                <option value="Blenders">Blenders</option>
+                <option value="Utensils">Utensils</option>
+                <option value="Gas cooker">Gas cooker</option>
+                <option value="Micro waves">Micro waves</option>
+                <option value="Others">Others</option>
             </select>
         </div>
-        <div class="form-group">
+        <div class="form-group mb-3">
             <label>Title</label>
             <input type="text" name="title" class="form-control form-control-lg <?php echo (!empty($data['title_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['product']->title; ?>">
             <span class="invalid-feedback"><?php echo $data['title_err']; ?></span>
         </div> 
-        <div class="form-group">
-            <label>description</label>
-            <input type="text" name="description" class="form-control form-control-lg <?php echo (!empty($data['desc_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['product']->description; ?>">
-            <span class="invalid-feedback"><?php echo $data['desc_err']; ?></span>
-        </div>
-        
-        <div class="form-group mb-2">
-            <label>Price</label>
-            <input type="number" name="price" class="form-control form-control-lg <?php echo (!empty($data['price_err'])) ? 'is-invalid' : ''; ?>" value="<?php echo $data['product']->price; ?>">
-            <span class="invalid-feedback"><?php echo $data['price_err']; ?></span>
-        </div>
 
         <label>Change Pic</label>
         <div class="card rounded-0 mb-2" style="width: 100px;">

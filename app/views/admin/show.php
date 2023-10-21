@@ -14,10 +14,9 @@
                         <div class="card rounded-0">
                             <img class="card-img rounded-0" height="140" src="<?php echo URLROOT . '/' . $product->img; ?>">
                         </div>
-                        <div class="card-body">
+                    <div class="card-body">
                         <a href="" class="h3 text-decoration-none"><?php echo $product->title ;?></a>
-                        <p class="text-center mb-0"><?php echo $product->description; ?></p>
-                    <p class="text-center mb-0">&#8358;<?php echo $product->price; ?>.00</p>
+                        
                     <div class="row mb-2">
                         <div class="col">
                         <p class=" text-center"><a class="text-success fs-6" href="<?=URLROOT?>/admin/edit/<?=$product->id?>">Edit</a></p>
@@ -30,7 +29,7 @@
                     </div>
                     
                 
-                </div>
+                    </div>
             </div>
         </div>
         <?php endforeach; ?>
