@@ -98,9 +98,7 @@
                 </div>
                 <div class="card-body lh-1 fs-6">
                 <a href="<?=URLROOT?>/users/view_p/<?=$product->id?>" class="h3 text-decoration-none">
-                    <?php echo $product->brand . ' ' . $product->model; ?>
-                    <p class="badge bg-secondary fs-6"><?=$product->cond_tion?></p>
-                     <p class="text-center text-success"><b>&#8358;<?php echo $product->price; ?>.00</b></p>
+                <?php echo $product->title; ?>
                 </a>
                 </div>
             </div>
